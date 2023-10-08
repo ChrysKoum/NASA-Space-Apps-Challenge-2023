@@ -24,4 +24,21 @@ To run the data cleaning scripts, execute:
 input_file_path = "path_to_your_input_file"
 output_file_path = "path_to_your_output_file"
 clean_and_impute(input_file_path, output_file_path)
+```
+## Data Analysis
+
+### Functionality:
+- **Plotting Bz**: The main function, `plotBz`, is designed to visualize the Bz component of the magnetic field over a specified period and to compute statistical measures like the mean, standard deviation, and percentiles.
+- **Yearly and Monthly Breakdown**: The script provides a detailed breakdown of the Bz component for the entire data range, each individual year, and each month within those years.
+
+### Analysis Steps:
+1. **Statistical Analysis**: For the specified period, calculate essential statistics such as the mean, standard deviation, minimum, maximum, and the 99th percentile of the Bz component.
+2. **Visualization**: Plot the Bz component against time. Highlight the 99th percentile with dashed lines for easy identification of extreme values.
+3. **Yearly and Monthly Insights**: Visualize the Bz component for each year and further break it down month by month to identify patterns and anomalies specific to periods.
+
+To run the data analysis scripts, ensure that the cleaned data is loaded into a dataframe named `data`, then execute:
+
+```python
+print("\t\t Bz for 2019-2022")
+plotBz(data,"2019-2022")
 
