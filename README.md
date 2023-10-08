@@ -1,60 +1,44 @@
-# Magnetic Reconnection Analysis using Convolutional Neural Networks (CNN)
+# Magnetic Reconnection Analysis
 
 ## Overview
 
-This repository contains Python scripts to process, clean, analyze, and predict interplanetary magnetic field data from spacecraft missions using Convolutional Neural Networks (CNN). The primary goal is to assess the frequency of magnetic reconnection, a vital space weather phenomenon. Understanding the frequency with which solar wind particles and energy infiltrate the geospace environment can shed light on potential space weather effects.
+This repository contains Python scripts to process, clean, and analyze interplanetary magnetic field data from spacecraft missions. The goal is to assess how often magnetic reconnection, a critical space weather phenomenon, occurs. This analysis is vital for understanding how frequently solar wind particles and energy penetrate the geospace environment, leading to potential space weather effects.
 
-Website Presentation: [NASA Space Apps Challenge 2023](https://chryskoum.github.io/NASA-Space-Apps-Challenge-2023)
+## Data Cleaning
 
-## Data Preprocessing
+### Files:
+- `wind_def_2022.txt`: Raw data file containing the interplanetary magnetic field measurements.
+- `wind_def_2022_clean.txt`: Cleaned data with imputed missing values.
+- `wind_def_2022_clean_month.txt`: Cleaned data with added month and day columns.
+- `wind_def_2022_clean_month_plus.txt`: Cleaned data with added month and day columns with an extra step of fill verification.
 
-### Data Import:
-The dataset is imported from a tab-separated file named 'data.txt'. Subsets of the data are selected using a step of 3 from 0 to 2000 for training and evaluation purposes.
+### Cleaning Steps:
 
-```python
-dataset = pd.read_csv('data.txt', sep="\t", header=0)
-s = np.arange(0,2000,3)
-X = dataset.iloc[s, 2:8].values
-y = dataset.iloc[s, 9].values
-```
+1. **Data Import**: Data is imported into a pandas dataframe from the raw data file.
+2. **Placeholders Replacement**: Placeholder values, which might represent missing or erroneous data, are replaced with NaN (Not a Number).
+3. **Linear Interpolation**: Missing values (NaNs) are imputed using linear interpolation. This ensures continuity in the data and fills in gaps.
+4. **Date Conversion**: The day of the year is converted to the corresponding month and day, making the dataset more readable and easier to analyze.
 
-### Data Cleaning:
-The data undergoes a series of checks and modifications:
-
-1. Temperature, Proton Density, Bz, and By values are examined to filter out or modify potential outliers or specific conditions.
-2. The dataset is split into training and test sets, with 70% of the data used for training and 30% for testing.
-3. Data normalization is applied using `StandardScaler` from Scikit-learn to ensure the model receives data in a standard format.
-
-## CNN Model Implementation
-
-### Initialization:
-A sequential model is initialized using TensorFlow's Keras API.
+To run the data cleaning scripts, execute:
 
 ```python
-cnn = tf.keras.models.Sequential()
+input_file_path = "path_to_your_input_file"
+output_file_path = "path_to_your_output_file"
+clean_and_impute(input_file_path, output_file_path)
 ```
+## Data Analysis
 
-### Building the Model:
+### Functionality:
+- **Plotting Bz**: The main function, `plotBz`, is designed to visualize the Bz component of the magnetic field over a specified period and to compute statistical measures like the mean, standard deviation, and percentiles.
+- **Yearly and Monthly Breakdown**: The script provides a detailed breakdown of the Bz component for the entire data range, each individual year, and each month within those years.
 
-1. **Input and First Hidden Layer**: The first layer consists of 6 units with a 'relu' activation function.
-2. **Second Hidden Layer**: The second layer also contains 6 units with a 'relu' activation function.
-3. **Output Layer**: A single unit for binary classification. Since no activation function is provided, it defaults to a linear activation.
+### Analysis Steps:
+1. **Statistical Analysis**: For the specified period, calculate essential statistics such as the mean, standard deviation, minimum, maximum, and the 99th percentile of the Bz component.
+2. **Visualization**: Plot the Bz component against time. Highlight the 99th percentile with dashed lines for easy identification of extreme values.
+3. **Yearly and Monthly Insights**: Visualize the Bz component for each year and further break it down month by month to identify patterns and anomalies specific to periods.
 
-### Training the Model:
+To run the data analysis scripts, ensure that the cleaned data is loaded into a dataframe named `data`, then execute:
 
-1. **Compilation**: The model is compiled using the Stochastic Gradient Descent (SGD) optimizer with a learning rate of 0.0001. The loss function used is 'binary_crossentropy', suitable for binary classification tasks.
-2. **Training**: The model is trained on the training set with a batch size of 32 for 100 epochs.
-
-### Model Evaluation:
-
-1. **Single Observation Prediction**: The model can predict the class of a single observation.
-2. **Test Set Prediction**: The model's predictions on the test set are binarized using a threshold of 0.5.
-3. **Performance Metrics**: The confusion matrix and accuracy score are computed using Scikit-learn to evaluate the model's performance on the test set.
-
-## Usage:
-
-To execute the CNN model, ensure TensorFlow and other necessary libraries are installed. Load the dataset, preprocess the data, build the model, train it, and finally evaluate its performance using the provided scripts.
-
-## Conclusion:
-
-This CNN model offers a structured approach to predicting the occurrence of magnetic reconnection based on interplanetary magnetic field data. Regular model evaluations and updates are recommended to ensure its accuracy and relevance.
+```python
+print("\t\t Bz for 2019-2022")
+plotBz(data,"2019-2022")
