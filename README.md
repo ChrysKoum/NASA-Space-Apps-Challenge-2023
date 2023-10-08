@@ -10,6 +10,7 @@ This repository contains Python scripts to process, clean, and analyze interplan
 - `wind_def_2022.txt`: Raw data file containing the interplanetary magnetic field measurements.
 - `wind_def_2022_clean.txt`: Cleaned data with imputed missing values.
 - `wind_def_2022_clean_month.txt`: Cleaned data with added month and day columns.
+- `wind_def_2022_clean_month_plus.txt`: Cleaned data with added month and day columns with an extra step of fill verification.
 
 ### Cleaning Steps:
 
