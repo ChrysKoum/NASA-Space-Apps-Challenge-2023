@@ -21,11 +21,12 @@ Website Presentation: [NASA Space Apps Challenge 2023](https://chryskoum.github.
 3. **Linear Interpolation**: Missing values (NaNs) are imputed using linear interpolation. This ensures continuity in the data and fills in gaps.
 4. **Date Conversion**: The day of the year is converted to the corresponding month and day, making the dataset more readable and easier to analyze.
 
-To run the data cleaning scripts, execute:
+To run the data cleaning scripts, execute the right files.
+For Example:
 
 ```python
-input_file_path = "path_to_your_input_file"
-output_file_path = "path_to_your_output_file"
+input_file_path = "wind_def_2022.txt"
+output_file_path = "wind_def_2022_clean.txt"
 clean_and_impute(input_file_path, output_file_path)
 ```
 ## Data Analysis
@@ -39,7 +40,7 @@ clean_and_impute(input_file_path, output_file_path)
 2. **Visualization**: Plot the Bz component against time. Highlight the 99th percentile with dashed lines for easy identification of extreme values.
 3. **Yearly and Monthly Insights**: Visualize the Bz component for each year and further break it down month by month to identify patterns and anomalies specific to periods.
 
-To run the data analysis scripts, ensure that the cleaned data is loaded into a dataframe named `data`, then execute:
+To run the data analysis scripts, ensure that the cleaned data(`wind_def_2022_clean_month_plus.txt`) is loaded into a dataframe named `data`, then execute:
 
 ```python
 print("\t\t Bz for 2019-2022")
