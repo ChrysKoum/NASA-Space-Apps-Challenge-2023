@@ -47,7 +47,7 @@ print("\t\t Bz for 2019-2022")
 plotBz(data,"2019-2022")
 ```
 
-## Conventional Neural Network
+## Convolutional Neural Network
 
 ### Usefulness
 
