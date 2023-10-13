@@ -32,19 +32,41 @@ clean_and_impute(input_file_path, output_file_path)
 ## Data Analysis
 
 ### Functionality:
+- **Create Datetime column**:Convert multiple columns in the DataFrame (data) into a single datetime column.
 - **Plotting Bz**: The main function, `plotBz`, is designed to visualize the Bz component of the magnetic field over a specified period and to compute statistical measures like the mean, standard deviation, and percentiles.
 - **Yearly and Monthly Breakdown**: The script provides a detailed breakdown of the Bz component for each month of the entire data range and the Bx,By,Bz components,the Temperature,the flow speed and proton density for each individual year and for the entire data range.
 
-### Analysis Steps:
-1. **Statistical Analysis**: For the specified period, calculate essential statistics such as the mean, standard deviation, minimum, maximum, and the 99th percentile of the Bz component.
-2. **Visualization**: Plot the Bz component against time. Highlight the 99th percentile with dashed lines for easy identification of extreme values.
-3. **Yearly and Monthly Insights**: Visualize the Bz component for each year and further break it down month by month to identify patterns and anomalies specific to periods.
-
-To run the data analysis scripts, ensure that the cleaned data(`wind_def_2022_clean_month_plus.txt`) is loaded into a dataframe named `data`, then execute:
-
 ```python
+data['Time'] = pd.to_datetime(data[['Year', 'Month', 'day', 'Hour','Minute']])
 print("\t\t Bz for 2019-2022")
 plotBz(data,"2019-2022")
+```
+
+### Analysis Steps:
+1. **Load data** :Function to load the cleaned data,with a column in datetime format.Also drops the duplicates values.
+2. **MR analysis**:Function that perform analysis of the MR events for a specific column of the data.It consists of the following steps:
+     -**Statistical Analysis**: For the specified period, calculate essential statistics such as the mean, standard deviation, minimum, maximum, and the 99th percentile of the specific column.
+     -**Count Potential MR**:Find all the points that exceed the 99th percentile threshold and keep only the start of their time according to the duration of the event .Creates a column of values of 1 if it is MR event and 0 if not.Print the count of MR events by summing all the values of this column.
+     -**Visualization**: Plot the column values against time. Highlight the 99th percentile with dashed lines for easy identification of extreme values.
+3. **Compare to other measures**:Call the MR_analysis for the columns of Bz component,flow speed,Temperature and Proton Density and compare the number of MR events based on each column.
+4. **Monthly Estimate of MR**: Count how many MR events occure per month from the new column that was created in the dataframe.
+
+To run the data analysis scripts execute:
+
+```python
+filename = "wind_def_2022_clean_month_plus.txt"
+data = load_data(filename)
+
+color_map = {
+        'Bz': 'green',
+        'Flow_Speed': 'red',
+        'Proton_Density': 'blue',
+        'Temperature': 'purple'
+    }
+
+# Process and plot for each variable
+for column in ['Bz', 'Flow_Speed', 'Proton_Density', 'Temperature']:
+  data=MR_analysis(data, column, color_map=color_map)
 ```
 
 ## Convolutional Neural Network
