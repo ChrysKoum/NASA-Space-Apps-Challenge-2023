@@ -33,7 +33,7 @@ clean_and_impute(input_file_path, output_file_path)
 
 ### Functionality:
 - **Plotting Bz**: The main function, `plotBz`, is designed to visualize the Bz component of the magnetic field over a specified period and to compute statistical measures like the mean, standard deviation, and percentiles.
-- **Yearly and Monthly Breakdown**: The script provides a detailed breakdown of the Bz component for the entire data range, each individual year, and each month within those years.
+- **Yearly and Monthly Breakdown**: The script provides a detailed breakdown of the Bz component for each month of the entire data range and the Bx,By,Bz components,the Temperature,the flow speed and proton density for each individual year and for the entire data range.
 
 ### Analysis Steps:
 1. **Statistical Analysis**: For the specified period, calculate essential statistics such as the mean, standard deviation, minimum, maximum, and the 99th percentile of the Bz component.
