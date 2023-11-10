@@ -8,7 +8,7 @@ This repository contains Python scripts to process, clean, and analyze interplan
 - Website Presentation: [NASA Space Apps Challenge 2023](https://chryskoum.github.io/NASA-Space-Apps-Challenge-2023)
 - Team Page: [Team Page MagnetiX of the NASA Space Apps Challenge 2023](https://www.spaceappschallenge.org/2023/find-a-team/magnetix)
 - Challenge 2023 Page: [Challenge Page Magnetic Reconnection](https://www.spaceappschallenge.org/2023/challenges/magnetic-reconnection)
-- NASA Spacecraft Data Page: [NASA Spacecraft Data](https://chryskoum.github.io/NASA-Space-Apps-Challenge-2023)
+- NASA Spacecraft Data Page: [NASA Spacecraft Data](https://omniweb.gsfc.nasa.gov/)
 
 ## Data Cleaning
 
