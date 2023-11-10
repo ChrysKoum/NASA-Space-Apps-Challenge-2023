@@ -5,6 +5,9 @@
 This repository contains Python scripts to process, clean, and analyze interplanetary magnetic field data from spacecraft missions. The goal is to assess how often magnetic reconnection, a critical space weather phenomenon, occurs. This analysis is vital for understanding how frequently solar wind particles and energy penetrate the geospace environment, leading to potential space weather effects.
 
 Website Presentation: [NASA Space Apps Challenge 2023](https://chryskoum.github.io/NASA-Space-Apps-Challenge-2023)
+Team Page: [Team Page MagnetiX of the NASA Space Apps Challenge 2023](https://www.spaceappschallenge.org/2023/find-a-team/magnetix)
+Challenge 2023 Page: [Challenge Page Magnetic Reconnection](https://www.spaceappschallenge.org/2023/challenges/magnetic-reconnection)
+NASA Spacecraft Data Page: [NASA Spacecraft Data](https://chryskoum.github.io/NASA-Space-Apps-Challenge-2023)
 
 ## Data Cleaning
 
