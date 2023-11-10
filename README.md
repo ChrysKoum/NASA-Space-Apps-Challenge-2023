@@ -12,11 +12,8 @@ This repository contains Python scripts to process, clean, and analyze interplan
 
 ## Data Cleaning
 
-### Data Columns :
--Bx	By	Bz	Flow_Speed	Proton_Density	Temperature
-
 ### Files:
-- Data Columns:  Bx	 By	Bz	Flow_Speed   Proton_Density	Temperature
+- Data Columns:  Bx	 |  By  |  Bz  |  Flow_Speed  |  Proton_Density  |  Temperature
 - `wind_def_2022.txt`: Raw data file containing the interplanetary magnetic field measurements.
 - `wind_def_2022_clean.txt`: Cleaned data with imputed missing values.
 - `wind_def_2022_clean_month.txt`: Cleaned data with added month and day columns.
